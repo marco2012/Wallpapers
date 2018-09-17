@@ -17,6 +17,7 @@ class GalleryViewController: UIViewController {
     var wallpaper:Wallpaper?
     var link:String?
     var initialTouchPoint: CGPoint = CGPoint(x: 0,y: 0) // define a variable to store initial touch position
+    var image : UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +27,17 @@ class GalleryViewController: UIViewController {
         let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(longPressed(gesture:)))
         myView.addGestureRecognizer(longPressRecognizer)
         
-        let p = Bundle.main.path(forResource: "launch", ofType: "gif")!
+        let p = Bundle.main.path(forResource: "loader", ofType: "gif")!
         let data = try! Data(contentsOf: URL(fileURLWithPath: p))
         myImageView.kf.indicatorType = .image(imageData: data)
+        
         link = API().getWallpaperLink(detail_link: (wallpaper?.detail_link)!)
         myImageView.kf.setImage(with: URL(string: link!), options: [.transition(.fade(0.2))])
 
+        let imageUrl = URL(string: self.link!)
+        let imageData = try! Data(contentsOf: imageUrl!)
+        image = UIImage(data: imageData)
+        
     }
     
     // https://medium.com/@qbo/dismiss-viewcontrollers-presented-modally-using-swipe-down-923cfa9d22f4
@@ -59,13 +65,29 @@ class GalleryViewController: UIViewController {
     }
     
     @objc func longPressed(gesture: UILongPressGestureRecognizer){
-        downloadWallpaper()
+        //downloadWallpaper()
+        shareImage()
     }
     
     @IBAction func buttonPress(_ sender: UIButton) {
-        downloadWallpaper()
+        //downloadWallpaper()
+        shareImage()
     }
     
+    // https://stackoverflow.com/a/35931947/1440037
+    func shareImage(){
+
+        // set up activity view controller
+        let imageToShare = [ image! ]
+        let activityViewController = UIActivityViewController(activityItems: imageToShare, applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
+        
+        // exclude some activity types from the list (optional)
+        activityViewController.excludedActivityTypes = [ UIActivity.ActivityType.airDrop, UIActivity.ActivityType.postToFacebook ]
+        
+        // present the view controller
+        self.present(activityViewController, animated: true, completion: nil)
+    }
     
     func downloadWallpaper(){
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
