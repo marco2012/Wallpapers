@@ -71,11 +71,15 @@ class API {
         } catch let error {
             print("Error: \(error)")
         }
-        if UIScreen.main.nativeBounds.height == 2436 { //iPhone X
-            return image_link[0] //iPhone X
-        } else {
-            return image_link[1] //iPhone 6-8
+
+        // https://stackoverflow.com/a/46192822/1440037
+        switch UIScreen.main.nativeBounds.height {
+        case 1136, 1334, 1920, 2208: // <= iPhone 8+
+            return image_link.count == 1 ? image_link[0] : image_link[1]    //usually the first link on the website is for old iphones and the second one is for iPhone X but sometimes there is only 1 link
+        default:                     // >= iPhone X
+            return image_link[0]
         }
+        
     }
     
     

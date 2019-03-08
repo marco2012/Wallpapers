@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14270.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,18 +21,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Wallpapers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Jp-aY-BtR">
-                                <rect key="frame" x="56" y="168" width="262" height="65"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background" translatesAutoresizingMaskIntoConstraints="NO" id="fcg-WA-B2p">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Wallpaper" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PFS-ZI-6Yf">
+                                <rect key="frame" x="66" y="185" width="242" height="65"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="50"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.169646786971831" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="9Jp-aY-BtR" firstAttribute="top" secondItem="hLn-m3-P8W" secondAttribute="bottom" constant="148" id="jjP-G8-6mu"/>
-                            <constraint firstItem="9Jp-aY-BtR" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="40" id="poA-0f-Eqs"/>
-                            <constraint firstItem="9Jp-aY-BtR" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="wUz-xF-ZFi"/>
+                            <constraint firstItem="PFS-ZI-6Yf" firstAttribute="top" secondItem="hLn-m3-P8W" secondAttribute="bottom" constant="165" id="0cg-JZ-gsx"/>
+                            <constraint firstItem="fcg-WA-B2p" firstAttribute="bottom" secondItem="JgM-ba-N0z" secondAttribute="top" id="3hm-di-unP"/>
+                            <constraint firstAttribute="trailing" secondItem="fcg-WA-B2p" secondAttribute="trailing" id="6XS-ca-Uzm"/>
+                            <constraint firstItem="PFS-ZI-6Yf" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="50" id="7g7-Vs-AYP"/>
+                            <constraint firstItem="fcg-WA-B2p" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Doa-ay-ah3"/>
+                            <constraint firstItem="fcg-WA-B2p" firstAttribute="top" secondItem="hLn-m3-P8W" secondAttribute="bottom" id="pli-XF-apr"/>
+                            <constraint firstItem="fcg-WA-B2p" firstAttribute="centerX" secondItem="PFS-ZI-6Yf" secondAttribute="centerX" id="yTu-Ss-xJc"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -41,4 +48,7 @@
             <point key="canvasLocation" x="52" y="374.66266866566718"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="background" width="1080" height="1920"/>
+    </resources>
 </document>
